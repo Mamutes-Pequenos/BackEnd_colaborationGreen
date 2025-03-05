@@ -27,7 +27,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: 1010
-          POSTGRES_DB: greenlearning
+          POSTGRES_DB: greenLearning
         options: --health-cmd="pg_isready -U user" --health-timeout=30s --health-start-period=5s --health-retries=5
 
     steps:
