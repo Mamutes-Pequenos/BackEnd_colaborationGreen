@@ -1,5 +1,6 @@
 package com.greenlearning.greenlearning;
 
+import com.greenLearning.greenlearning.GreenLearningApplication;
 import com.greenLearning.greenlearning.controller.SalaController;
 import com.greenLearning.greenlearning.dto.SalaDTO;
 import com.greenLearning.greenlearning.entity.Aluno;
@@ -23,7 +24,7 @@ import java.util.*;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@SpringBootTest(classes = GreenLearningApplication.class)
 class TestSala {
 
     @MockBean

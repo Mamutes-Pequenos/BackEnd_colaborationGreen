@@ -1,5 +1,6 @@
 package com.greenlearning.greenlearning;
 
+import com.greenLearning.greenlearning.GreenLearningApplication;
 import com.greenLearning.greenlearning.controller.AlunoController;
 import com.greenLearning.greenlearning.dto.AlunoDTO;
 import com.greenLearning.greenlearning.entity.Aluno;
@@ -26,7 +27,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@SpringBootTest(classes = GreenLearningApplication.class)
 class TestAluno {
 
 	@MockBean
