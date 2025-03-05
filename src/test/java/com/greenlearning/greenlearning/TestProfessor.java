@@ -1,5 +1,6 @@
 package com.greenlearning.greenlearning;
 
+import com.greenLearning.greenlearning.GreenLearningApplication;
 import com.greenLearning.greenlearning.controller.ProfessorController;
 import com.greenLearning.greenlearning.dto.ProfessorDTO;
 import com.greenLearning.greenlearning.entity.Professor;
@@ -23,7 +24,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@SpringBootTest(classes = GreenLearningApplication.class)
 class TestProfessor {
 
 

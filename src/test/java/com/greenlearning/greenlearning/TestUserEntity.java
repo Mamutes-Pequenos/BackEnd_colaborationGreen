@@ -1,5 +1,6 @@
 package com.greenlearning.greenlearning;
 
+import com.greenLearning.greenlearning.GreenLearningApplication;
 import com.greenLearning.greenlearning.controller.UserController;
 import com.greenLearning.greenlearning.dto.UserEntityDTO;
 import com.greenLearning.greenlearning.entity.UserEntity;
@@ -22,7 +23,7 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@SpringBootTest(classes = GreenLearningApplication.class)
 class TestUserEntity {
 
     @MockBean

@@ -24,4 +24,3 @@ jobs:
         run: mvn clean install
 
       - name: Run unit tests
-        run: mvn test
