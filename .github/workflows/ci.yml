@@ -3,11 +3,11 @@ name: Backend CI Pipeline
 on:
   push:
     branches:
-      - main  # Você pode substituir por outras branches ou até por pull requests
+      - main 
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Pode ser outra imagem se você preferir, por exemplo, windows-latest
+    runs-on: ubuntu-latest  
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -16,13 +16,15 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adoptopenjdk'
+          distribution: 'adoptium'
+          java-package: jdk
+          architecture: x64
 
       - name: Build the project with Maven
-        run: mvn clean install -DskipTests  # Caso queira pular os testes no build
+        run: mvn clean install -DskipTests  
 
       - name: Run unit tests
-        run: mvn test  # Executa os testes da sua aplicação
+        run: mvn test  
 
       - name: Docker build and push
         run: |
