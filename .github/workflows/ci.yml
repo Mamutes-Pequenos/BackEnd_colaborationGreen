@@ -9,6 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest  
 
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: greenLearning
+        options: --health-cmd="pg_isready -U user" --health-timeout=30s --health-start-period=5s --health-retries=5
+        
     steps:
       - name: Checkout code
         uses: actions/checkout@v2  # Esta etapa garante que o código seja clonado
@@ -19,6 +30,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Build the project with Maven
         run: mvn clean install
