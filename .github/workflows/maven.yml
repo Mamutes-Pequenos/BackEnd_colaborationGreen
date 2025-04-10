@@ -74,12 +74,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # Usando o segredo com a chave privada
 
-      - name: SSH into VM using backpipeline credentials
+      - name: SSH into VM using vpnpipeline credentials
         run: |
           # Conectar via SSH e executar comandos na VM
-          ssh -o StrictHostKeyChecking=no backpipeline@35.211.244.181 "
+          ssh -o StrictHostKeyChecking=no vpnpipeline@35.211.189.238 "
+            ssh backpipeline@10.0.0.4
             # Navegar para o diretório da aplicação
-            cd /home/emili/~/backend || exit 1;
+            cd /home/emili/~/backend/back || exit 1;
           
             # Parar e remover containers antigos (caso use Docker)
             docker-compose down || exit 1;
