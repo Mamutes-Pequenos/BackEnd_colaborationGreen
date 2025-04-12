@@ -55,10 +55,10 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t arthurbusanello/backend-app:latest .  # Altere o nome da imagem para refletir o backend
+        run: docker build -t heshambr/green-learning-backend .  # Altere o nome da imagem para refletir o backend
 
       - name: Push Docker image
-        run: docker push arthurbusanello/backend-app:latest  # Faz o push da imagem para o Docker Hub
+        run: docker push heshambr/green-learning-backend  # Faz o push da imagem para o Docker Hub
 
   # Job de deploy para a VM via SSH
   deploy:
@@ -78,7 +78,7 @@ jobs:
         run: |
           # Conectar via SSH e executar comandos na VM
           ssh -o StrictHostKeyChecking=no vpnpipeline@35.211.189.238 "
-            ssh backpipeline@10.0.0.4
+            ssh backpipeline@10.0.0.3
             # Navegar para o diretório da aplicação
             cd /home/emili/~/backend/back || exit 1;
           
