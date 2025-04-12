@@ -84,9 +84,10 @@ jobs:
 
       - name: SSH into VM using vpnpipeline credentials
         run: |
-          ssh -v -o StrictHostKeyChecking=no vpnpipeline@35.211.189.238 << 'EOF'
+          # Conectar na VM VPN (vpnpipeline)
+          ssh -o StrictHostKeyChecking=no vpnpipeline@35.211.189.238 << 'EOF'
             # Conectar na VM backend (backpipeline) a partir da VM VPN
-            ssh -v -o StrictHostKeyChecking=no backpipeline@10.0.0.3 << 'INNER_EOF'
+            ssh -o StrictHostKeyChecking=no backpipeline@10.0.0.3 << 'INNER_EOF'
               # Navegar para o diretório da aplicação e executar comandos
               cd /home/emili/~/backend/back || exit 1;
               
