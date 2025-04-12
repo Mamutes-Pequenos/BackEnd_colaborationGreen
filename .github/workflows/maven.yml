@@ -85,15 +85,17 @@ jobs:
       - name: SSH into VM using backpipeline credentials
         run: |
           # Conectar via SSH e executar comandos na VM
-          ssh -o StrictHostKeyChecking=no backpipeline@10.0.0.3 "
-            # Navegar para o diretório da aplicação
-            cd /home/emili/~/backend/back || exit 1;
-      
-            # Parar e remover containers antigos (caso use Docker)
-            docker-compose down || exit 1;
-      
-            # Subir os containers novamente com a versão mais recente
-            docker-compose up -d || exit 1;
-      
-            echo 'Deploy concluído com sucesso!'
+          ssh -o StrictHostKeyChecking=no vpnpipeline@35.211.189.238 "
+            ssh -o StrictHostKeyChecking=no backpipeline@10.0.0.3 "
+              # Navegar para o diretório da aplicação
+              cd /home/emili/~/backend/back || exit 1;
+        
+              # Parar e remover containers antigos (caso use Docker)
+              docker-compose down || exit 1;
+        
+              # Subir os containers novamente com a versão mais recente
+              docker-compose up -d || exit 1;
+        
+              echo 'Deploy concluído com sucesso!'
+            "
           "
