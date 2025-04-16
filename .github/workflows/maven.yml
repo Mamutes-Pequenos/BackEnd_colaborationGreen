@@ -62,6 +62,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+      - name: Remove old Docker image (if exists)
+        run: |
+          # Parar e remover container atual
+          docker-compose down || echo "No container running to remove"
+
+          # Remover a imagem antiga
+          docker rmi heshambr/green-learning-backend:latest || echo "No previous image to remove"
+
       - name: Build Docker image
         run: docker build -t heshambr/green-learning-backend .  # Altere o nome da imagem para refletir o backend
 
