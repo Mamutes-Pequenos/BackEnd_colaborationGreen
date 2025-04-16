@@ -97,7 +97,7 @@ jobs:
             # Conectar na VM backend (backpipeline) a partir da VM VPN
             ssh -o StrictHostKeyChecking=no backpipeline@10.0.0.3 '
               # Adicionar depuração para verificar a conexão
-              echo "Conectado na VM de backend: $(hostname)"
+              echo \"Conectado na VM de backend: $(hostname)\"
               
               # Verificar o diretório atual na VM de backend
               pwd
@@ -106,7 +106,7 @@ jobs:
               cd /home/emili/~/backend/back || exit 1;
       
               # Verificar se o diretório foi acessado corretamente
-              echo "Diretório atual após cd: $(pwd)"
+              echo \"Diretório atual após cd: $(pwd)\"
               
               # Parar e remover containers antigos (caso use Docker)
               docker-compose down || exit 1;
