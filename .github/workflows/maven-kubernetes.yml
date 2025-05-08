@@ -1,0 +1,34 @@
+name: Deploy Backend to GKE
+
+on:
+  push:
+    branches: ["developer"]
+
+env:
+  PROJECT_ID: corded-racer-455623-i7
+  CLUSTER_NAME: semanal-prod
+  CLUSTER_LOCATION: us-east1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Autenticar no Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: Instalar Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Acessar cluster GKE
+        run: |
+          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_LOCATION }}
+
+      - name: Aplicar arquivos do Kubernetes
+        run: |
+          kubectl apply -f k8ss/
