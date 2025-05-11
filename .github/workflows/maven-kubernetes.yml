@@ -29,6 +29,10 @@ jobs:
         run: |
           gcloud container clusters get-credentials $CLUSTER_NAME --region $CLUSTER_LOCATION --project $PROJECT_ID
 
+      - name: Disable gke-gcloud-auth-plugin
+        run: |
+          gcloud config unset auth/use_gke_gcloud_auth_plugin
+
       - name: Aplicar arquivos do Kubernetes
         run: |
           kubectl apply -f K8s/
