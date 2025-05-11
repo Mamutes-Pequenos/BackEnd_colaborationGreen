@@ -22,17 +22,15 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
-      - name: Instalar Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
+      - name: Instalar SDK e gke-gcloud-auth-plugin
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-cloud-sdk-gke-gcloud-auth-plugin
 
       - name: Acessar cluster GKE
         run: |
           gcloud container clusters get-credentials $CLUSTER_NAME --region $CLUSTER_LOCATION --project $PROJECT_ID
 
-      - name: Disable gke-gcloud-auth-plugin
-        run: |
-          gcloud config unset auth/use_gke_gcloud_auth_plugin || true
-
       - name: Aplicar arquivos do Kubernetes
         run: |
-          kubectl apply -f K8s/ --validate=false
+          kubectl apply -f K8s/
