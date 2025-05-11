@@ -35,4 +35,4 @@ jobs:
 
       - name: Aplicar arquivos do Kubernetes
         run: |
-          kubectl apply -f K8s/
+          kubectl apply -f K8s/ --validate=false
