@@ -6,8 +6,8 @@ on:
 
 env:
   PROJECT_ID: corded-racer-455623-i7
-  CLUSTER_NAME: semanal-prod
-  CLUSTER_LOCATION: us-east1
+  CLUSTER_NAME: semanal-homol
+  CLUSTER_LOCATION: us-central1
 
 jobs:
   deploy:
@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Autenticar no Google Cloud
-        uses: google-github-actions/auth@v1
+        uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
@@ -27,8 +27,8 @@ jobs:
 
       - name: Acessar cluster GKE
         run: |
-          gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_LOCATION }}
+          gcloud container clusters get-credentials $CLUSTER_NAME --region $CLUSTER_LOCATION --project $PROJECT_ID
 
       - name: Aplicar arquivos do Kubernetes
         run: |
-          kubectl apply -f k8ss/
+          kubectl apply -f K8s/
