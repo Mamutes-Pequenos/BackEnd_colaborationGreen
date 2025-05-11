@@ -31,7 +31,7 @@ jobs:
 
       - name: Disable gke-gcloud-auth-plugin
         run: |
-          gcloud config unset auth/use_gke_gcloud_auth_plugin
+          gcloud config unset auth/use_gke_gcloud_auth_plugin || true
 
       - name: Aplicar arquivos do Kubernetes
         run: |
