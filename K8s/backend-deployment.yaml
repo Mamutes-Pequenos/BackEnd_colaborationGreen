@@ -14,17 +14,15 @@ spec:
     spec:
       containers:
       - name: backend
-        image: heshambr/green-learning-backend:v9
+        image: heshambr/green-learning-backend
         ports:
         - containerPort: 8080
         env:
-        - name: DB_HOST
-          value: postgres-service
-        - name: DB_PORT
-          value: "5432"
-        - name: DB_NAME
-          value: greenLearning
-        - name: DB_USER
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://postgres-service.dbNamespace.svc.cluster.local:5432/greenlearning
+        - name: SPRING_DATASOURCE_USERNAME
           value: postgres
-        - name: DB_PASSWORD
-          value: "1010"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: 1010
+        - name: APP_ALLOWED_ORIGIN
+          value: "http://frontend-service.stageFront.svc.cluster.local"
