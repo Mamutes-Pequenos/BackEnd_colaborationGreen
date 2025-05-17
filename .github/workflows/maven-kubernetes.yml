@@ -11,7 +11,7 @@ env:
   PROJECT_ID: corded-racer-455623-i7
   CLUSTER_NAME: semanal-homol
   CLUSTER_LOCATION: us-central1
-  NAMESPACE: stageBack  # será alterado dinamicamente para produção se branch == main
+  NAMESPACE: stageback  # será alterado dinamicamente para produção se branch == main
 
 jobs:
   build-and-deploy:
@@ -81,13 +81,13 @@ jobs:
           if [[ "${GITHUB_REF##*/}" == "main" ]]; then
             echo "CLUSTER_NAME=semanal-prod" >> $GITHUB_ENV
             echo "CLUSTER_LOCATION=us-east1" >> $GITHUB_ENV
-            echo "NAMESPACE=productionBack" >> $GITHUB_ENV
-            echo "FRONT_NAMESPACE=productionFront" >> $GITHUB_ENV
+            echo "NAMESPACE=productionback" >> $GITHUB_ENV
+            echo "FRONT_NAMESPACE=productionfront" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=semanal-homol" >> $GITHUB_ENV
             echo "CLUSTER_LOCATION=us-central1" >> $GITHUB_ENV
-            echo "NAMESPACE=stageBack" >> $GITHUB_ENV
-            echo "FRONT_NAMESPACE=stageFront" >> $GITHUB_ENV
+            echo "NAMESPACE=stageback" >> $GITHUB_ENV
+            echo "FRONT_NAMESPACE=stagefront" >> $GITHUB_ENV
           fi
 
       - name: Acessar cluster GKE
