@@ -37,7 +37,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: maven
+          # cache: maven  -- tava dando pau
 
       - name: Esperar PostgreSQL iniciar
         run: |
