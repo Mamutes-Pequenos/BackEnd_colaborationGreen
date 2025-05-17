@@ -23,6 +23,6 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD
-          value: 1010
+          value: "1010"
         - name: APP_ALLOWED_ORIGIN
           value: "http://frontend-service.stageFront.svc.cluster.local"
