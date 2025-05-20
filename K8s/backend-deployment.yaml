@@ -28,10 +28,10 @@ spec:
               ephemeral-storage: "500Mi"
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:postgresql://postgres-service.dbnamespace.svc.cluster.local:5432/greenlearning
+          value: jdbc:postgresql://postgres-service.dbnamespace.svc.cluster.local:5432/greenLLLLLearning
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD
           value: "1010"
         - name: APP_ALLOWED_ORIGIN
-          value: "http://frontend-service.stageFront.svc.cluster.local"
+          value: "http://34.31.216.009"
