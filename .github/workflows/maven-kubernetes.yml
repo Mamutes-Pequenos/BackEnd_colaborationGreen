@@ -9,8 +9,8 @@ on:
 env:
   IMAGE_NAME: heshambr/green-learning-backend
   PROJECT_ID: corded-racer-455623-i7
-  CLUSTER_NAME: semanal-homol
-  CLUSTER_LOCATION: us-central1
+  CLUSTER_NAME: cluster-semanal-homol
+  CLUSTER_LOCATION: us-east1
   NAMESPACE: stageback  # será alterado dinamicamente para produção se branch == main
 
 jobs:
@@ -79,17 +79,17 @@ jobs:
       - name: Definir cluster e namespace de destino
         run: |
           if [[ "${GITHUB_REF##*/}" == "main" ]]; then
-            echo "CLUSTER_NAME=semanal-prod" >> $GITHUB_ENV
-            echo "CLUSTER_LOCATION=us-east1" >> $GITHUB_ENV
-            echo "NAMESPACE=productionback" >> $GITHUB_ENV
-            echo "FRONT_NAMESPACE=productionfront" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=cluster-semanal-prod" >> $GITHUB_ENV
+            echo "CLUSTER_LOCATION=us-central1-b" >> $GITHUB_ENV
+            echo "NAMESPACE=prodback" >> $GITHUB_ENV
+            echo "FRONT_NAMESPACE=prodfront" >> $GITHUB_ENV
           else
-            echo "CLUSTER_NAME=semanal-homol" >> $GITHUB_ENV
-            echo "CLUSTER_LOCATION=us-central1" >> $GITHUB_ENV
-            echo "NAMESPACE=stageback" >> $GITHUB_ENV
-            echo "FRONT_NAMESPACE=stagefront" >> $GITHUB_ENV
+            echo "CLUSTER_NAME=cluster-semanal-homol" >> $GITHUB_ENV
+            echo "CLUSTER_LOCATION=us-east1-b" >> $GITHUB_ENV
+            echo "NAMESPACE=homolback" >> $GITHUB_ENV
+            echo "FRONT_NAMESPACE=homolfront" >> $GITHUB_ENV
           fi
-
+      #vai toma no cu
       - name: Acessar cluster GKE
         run: |
           gcloud container clusters get-credentials $CLUSTER_NAME --region $CLUSTER_LOCATION --project $PROJECT_ID
