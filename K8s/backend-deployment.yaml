@@ -20,7 +20,7 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:postgresql://postgres-service.dbnamespace.svc.cluster.local:5432/greenlearning
+          value: jdbc:postgresql://banco-service.db-namespace.svc.cluster.local:5432/greenlearning
         - name: SPRING_DATASOURCE_USERNAME
           value: postgres
         - name: SPRING_DATASOURCE_PASSWORD
