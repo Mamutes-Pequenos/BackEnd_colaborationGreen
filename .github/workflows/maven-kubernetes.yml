@@ -89,7 +89,7 @@ jobs:
             echo "NAMESPACE=homolback" >> $GITHUB_ENV
             echo "FRONT_NAMESPACE=homolfront" >> $GITHUB_ENV
           fi
-
+      #vai toma no cu
       - name: Acessar cluster GKE
         run: |
           gcloud container clusters get-credentials $CLUSTER_NAME --region $CLUSTER_LOCATION --project $PROJECT_ID
