@@ -80,12 +80,12 @@ jobs:
         run: |
           if [[ "${GITHUB_REF##*/}" == "main" ]]; then
             echo "CLUSTER_NAME=cluster-semanal-prod" >> $GITHUB_ENV
-            echo "CLUSTER_LOCATION=us-central1" >> $GITHUB_ENV
+            echo "CLUSTER_LOCATION=us-central1-b" >> $GITHUB_ENV
             echo "NAMESPACE=prodback" >> $GITHUB_ENV
             echo "FRONT_NAMESPACE=prodfront" >> $GITHUB_ENV
           else
             echo "CLUSTER_NAME=cluster-semanal-homol" >> $GITHUB_ENV
-            echo "CLUSTER_LOCATION=us-east1" >> $GITHUB_ENV
+            echo "CLUSTER_LOCATION=us-east1-b" >> $GITHUB_ENV
             echo "NAMESPACE=homolback" >> $GITHUB_ENV
             echo "FRONT_NAMESPACE=homolfront" >> $GITHUB_ENV
           fi
