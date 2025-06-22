@@ -103,3 +103,4 @@ jobs:
           kubectl apply -f K8s/ --namespace=$NAMESPACE
           kubectl set image deployment/backend backend=$IMAGE_NAME:${GITHUB_SHA} -n $NAMESPACE
           kubectl set env deployment/backend APP_ALLOWED_ORIGIN=http://frontend-service.$FRONT_NAMESPACE.svc.cluster.local -n $NAMESPACE
+          kubectl rollout restart deployment/backend -n $NAMESPACE
