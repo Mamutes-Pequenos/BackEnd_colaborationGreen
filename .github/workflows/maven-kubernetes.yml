@@ -8,10 +8,10 @@ on:
 
 env:
   IMAGE_NAME: heshambr/green-learning-backend
-  PROJECT_ID: corded-racer-455623-i7
-  CLUSTER_NAME: cluster-semanal-homol
-  CLUSTER_LOCATION: us-east1
-  NAMESPACE: stageback  # será alterado dinamicamente para produção se branch == main
+  PROJECT_ID: wise-coyote-463420-r7
+  CLUSTER_NAME: cluster-semanal-prod
+  CLUSTER_LOCATION: us-central1
+  NAMESPACE: prodback  # será alterado dinamicamente para produção se branch == main
 
 jobs:
   build-and-deploy:
