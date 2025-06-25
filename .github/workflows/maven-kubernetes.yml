@@ -64,7 +64,7 @@ jobs:
       - name: Autenticar no Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          credentials_json: '${{ secrets.GCP_CREDENTIALS_PROD }}'
 
       - name: Instalar Google Cloud SDK com gke-gcloud-auth-plugin
         run: |
