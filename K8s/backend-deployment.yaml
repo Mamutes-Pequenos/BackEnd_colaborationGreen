@@ -34,4 +34,4 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: "1010"
         - name: APP_ALLOWED_ORIGIN
-          value: "http://frontend-ingress.homolfront.svc.cluster.local"
+          value: "http://frontend-ingress.prodfront.svc.cluster.local"
